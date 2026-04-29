@@ -1,0 +1,9 @@
+name: episodic-memory
+description: >
+  Autonomous-loop episodic memory integration.
+  Hooks into session:start to write recall file,
+  and agent:end to record conversation episodes to Neo4j graph + SQLite graph store.
+events:
+  - gateway:startup
+  - session:start
+  - agent:end
