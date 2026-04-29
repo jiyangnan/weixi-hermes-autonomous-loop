@@ -1,0 +1,39 @@
+neo4j:
+  uri: "bolt://localhost:7687"
+  user: "neo4j"
+  password: "hermes-password"
+
+vector_store:
+  dim: 384
+  index_type: "flat"
+
+storage:
+  base: "/Users/ferdinandji/.hermes/autonomous-loop"
+
+# -----------------------------------------------------------------------
+# Autonomy config — scope gates for autonomous behaviors
+# Human sets these; agent checks before acting autonomously.
+# -----------------------------------------------------------------------
+autonomy:
+  # Whether to automatically recall relevant episodes at session start.
+  # If false, agent must explicitly use recall (still works but not auto).
+  auto_recall: true
+
+  # Max episodes to inject into context per session start.
+  # Prevents context overflow while keeping relevant memories.
+  max_recall_episodes: 5
+
+  # Whether agent may autonomously cut episodes (commit to memory).
+  # If false, only explicit triggers (hook:agent:end) create episodes.
+  # CONSERVATIVE default: only record via hook.
+  auto_episode_cut: false
+
+  # Whether agent may run self-reflection (analyze own episodes, update behavior).
+  # If false, agent reads/queries but never writes back learned insights.
+  # CONSERVATIVE default: reflection is read-only.
+  auto_reflection: false
+
+  # If auto_recall is true, minimum relevance_score threshold (0.0–1.0+).
+  # Episodes below this score are silently skipped.
+  # Set to 0.0 to include everything that matches.
+  recall_min_score: 0.5
