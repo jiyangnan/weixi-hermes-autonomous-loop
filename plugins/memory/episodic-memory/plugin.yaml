@@ -1,0 +1,7 @@
+name: episodic-memory
+version: 1.0.0
+description: "Episodic memory with semantic recall — session-scoped context injection on first turn, powered by FAISS vector search and sentence-transformers."
+pip_dependencies: []
+hooks:
+  - session:start
+  - agent:end

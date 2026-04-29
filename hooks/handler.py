@@ -142,6 +142,7 @@ def _recall_for_session(platform: str, user_id: str, session_id: str, session_ke
         "platform": platform,
         "user_id_hash": _user_tag(user_id),
         "session_id": session_id,
+        "session_key": session_key,
     }
 
 
